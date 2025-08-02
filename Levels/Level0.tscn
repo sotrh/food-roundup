@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bw5iwpsvhugv8"]
+[gd_scene load_steps=4 format=3 uid="uid://bw5iwpsvhugv8"]
 
 [ext_resource type="PackedScene" uid="uid://bndsjvkllbomm" path="res://Entities/Player.tscn" id="1_6io7f"]
 [ext_resource type="PackedScene" uid="uid://b03f2mffl5kp2" path="res://Entities/Ingredient.tscn" id="2_ff0on"]
+[ext_resource type="Script" uid="uid://py4en8l6575r" path="res://Utils/FollowCam.gd" id="3_ivoou"]
 
 [node name="World" type="Node2D"]
 
@@ -16,3 +17,7 @@ position = Vector2(421, 516)
 
 [node name="Ingredient3" parent="." instance=ExtResource("2_ff0on")]
 position = Vector2(964, 142)
+
+[node name="FollowCam" type="Camera2D" parent="."]
+script = ExtResource("3_ivoou")
+player_path = NodePath("../Player")
