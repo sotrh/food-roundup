@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/oh-no-1.mp3-ddead596e7178e4fbb55d8f81864e170.
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4
