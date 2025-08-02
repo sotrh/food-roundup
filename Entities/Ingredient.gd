@@ -3,9 +3,11 @@ extends CharacterBody2D
 @export var speed = 400;
 @export var flee_cooldown = 0.5;
 @export var surprise_cooldown = 0.2;
+@export var rotation_speed = 2.0;
 
 @export var sound_pack: SoundPack;
 
+@onready var sprite = $"Sprite2D";
 @onready var audio_player = $"AudioStreamPlayer2D";
 
 var _players: Array[Node2D];
@@ -20,8 +22,12 @@ var _state = State.Idle;
 var _dir = Vector2.ZERO;
 var _flee_timer = 0.0;
 var _surprise_timer = 0.0;
+var _rotation_timer = 0.0;
 
 func _process(delta: float) -> void:
+	_rotation_timer += rotation_speed * delta;
+	sprite.rotation = sin(_rotation_timer) * 0.25 * _dir.length_squared();
+	
 	match _state:
 		State.Idle:
 			if not _players.is_empty():
@@ -39,7 +45,7 @@ func _process(delta: float) -> void:
 				audio_player.play();
 				_state = State.Fleeing;
 		State.Fleeing:
-			if _players.is_empty() && _flee_timer <= 0:
+			if _players.is_empty() && _flee_timer <= 0 && not audio_player.playing:
 				_state = State.Idle;
 				return;
 				

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b03f2mffl5kp2" path="res://Entities/Ingredient.tscn" id="2_ff0on"]
 [ext_resource type="Script" uid="uid://py4en8l6575r" path="res://Utils/FollowCam.gd" id="3_ivoou"]
 
-[node name="World" type="Node2D"]
+[node name="Level" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_6io7f")]
 position = Vector2(533, 260)

@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ctbsli4xj6fmg"]
+
+[ext_resource type="FontFile" uid="uid://b1txqsceb2ulm" path="res://Fonts/Freckle_Face/FreckleFace-Regular.ttf" id="1_fl8m8"]
+
+[resource]
+default_font = ExtResource("1_fl8m8")
+default_font_size = 100

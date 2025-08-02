@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cr7lmwijuh1kk"]
+
+[ext_resource type="Script" uid="uid://ctgf8f06kiysa" path="res://Game.gd" id="1_wbfu4"]
+[ext_resource type="PackedScene" uid="uid://bw5iwpsvhugv8" path="res://Levels/Level0.tscn" id="2_u44n3"]
+[ext_resource type="PackedScene" uid="uid://be50eve65ilpf" path="res://Levels/TitleScreen.tscn" id="2_xkndl"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_wbfu4")
+start_level = ExtResource("2_u44n3")
+start_ui = ExtResource("2_xkndl")
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1151.0
+offset_bottom = 649.0
+
+[node name="Music" type="AudioStreamPlayer" parent="."]

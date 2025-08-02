@@ -3,13 +3,16 @@ extends CharacterBody2D
 @export var speed = 400;
 @export var range = 400;
 @export var throw_speed = 800;
+@export var rotation_speed = 8.0;
 
 @onready var lasso_target = $"LassoTarget";
 @onready var lasso_visual = $"LassoVisual";
+@onready var sprite = $"PlayerSprite";
 
 var _using_joystick = false;
 var _dir = Vector2.ZERO;
 var _state = State.Moving;
+var _rotation_timer = 0.0;
 
 var _entities_in_lasso: Array[Node2D] = [];
 var _lasso_throw_distance = 0;
@@ -37,6 +40,14 @@ func _input(event: InputEvent) -> void:
 
 
 func _process(delta: float) -> void:
+	if not Global.game.game_started:
+		lasso_target.visible = false;
+		lasso_visual.visible = false;
+		return;
+		
+	_rotation_timer += rotation_speed * delta;
+	sprite.rotation = sin(_rotation_timer) * 0.25 * _dir.length_squared();
+	
 	match _state:
 		State.Moving:
 			lasso_target.visible = true;
