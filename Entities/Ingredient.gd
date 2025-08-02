@@ -4,6 +4,10 @@ extends CharacterBody2D
 @export var flee_cooldown = 0.5;
 @export var surprise_cooldown = 0.2;
 
+@export var sound_pack: SoundPack;
+
+@onready var audio_player = $"AudioStreamPlayer2D";
+
 var _players: Array[Node2D];
 
 enum State {
@@ -23,12 +27,16 @@ func _process(delta: float) -> void:
 			if not _players.is_empty():
 				_state = State.Suprised;
 				_surprise_timer = surprise_cooldown;
+				audio_player.stream = sound_pack.random_surprise_sound();
+				audio_player.play()
 				return;
 			
 			_dir = Vector2.ZERO;
 		State.Suprised:
 			_surprise_timer -= delta;
 			if _surprise_timer <= 0.0:
+				audio_player.stream = sound_pack.random_flee_sound();
+				audio_player.play();
 				_state = State.Fleeing;
 		State.Fleeing:
 			if _players.is_empty() && _flee_timer <= 0:
