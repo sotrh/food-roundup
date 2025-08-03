@@ -48,6 +48,11 @@ func _process(delta: float) -> void:
 	_rotation_timer += rotation_speed * delta;
 	sprite.rotation = sin(_rotation_timer) * 0.25 * _dir.length_squared();
 	
+	if _dir.x < 0:
+		sprite.flip_h = false;
+	elif _dir.x > 0:
+		sprite.flip_h = true;
+	
 	match _state:
 		State.Moving:
 			lasso_target.visible = true;

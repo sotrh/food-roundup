@@ -1,23 +1,62 @@
-[gd_scene load_steps=4 format=3 uid="uid://bw5iwpsvhugv8"]
+[gd_scene load_steps=6 format=3 uid="uid://bw5iwpsvhugv8"]
 
 [ext_resource type="PackedScene" uid="uid://bndsjvkllbomm" path="res://Entities/Player.tscn" id="1_6io7f"]
+[ext_resource type="Texture2D" uid="uid://5yf0mwild7hv" path="res://Textures/dirt.png" id="1_p2hwe"]
 [ext_resource type="PackedScene" uid="uid://b03f2mffl5kp2" path="res://Entities/Ingredient.tscn" id="2_ff0on"]
 [ext_resource type="Script" uid="uid://py4en8l6575r" path="res://Utils/FollowCam.gd" id="3_ivoou"]
+[ext_resource type="Script" uid="uid://dseu1ryrh77f1" path="res://Utils/Spawner.gd" id="4_p2hwe"]
 
 [node name="Level" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_6io7f")]
-position = Vector2(533, 260)
-
-[node name="Ingredient" parent="." instance=ExtResource("2_ff0on")]
-position = Vector2(124, 157)
-
-[node name="Ingredient2" parent="." instance=ExtResource("2_ff0on")]
-position = Vector2(421, 516)
-
-[node name="Ingredient3" parent="." instance=ExtResource("2_ff0on")]
-position = Vector2(964, 142)
+[node name="BackGround" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1500.0
+offset_top = -1500.0
+offset_right = 1500.0
+offset_bottom = 1500.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_p2hwe")
+expand_mode = 1
+stretch_mode = 1
 
 [node name="FollowCam" type="Camera2D" parent="."]
 script = ExtResource("3_ivoou")
-player_path = NodePath("../Player")
+player_path = NodePath("../Entities/Player")
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="Entities" instance=ExtResource("1_6io7f")]
+
+[node name="Spawner3" type="Node2D" parent="Entities"]
+position = Vector2(-540, 283)
+script = ExtResource("4_p2hwe")
+entity_scene = ExtResource("2_ff0on")
+spawn_cooldown = 2.0
+metadata/_custom_type_script = "uid://dseu1ryrh77f1"
+
+[node name="Spawner4" type="Node2D" parent="Entities"]
+position = Vector2(519, 273)
+script = ExtResource("4_p2hwe")
+entity_scene = ExtResource("2_ff0on")
+spawn_cooldown = 2.0
+metadata/_custom_type_script = "uid://dseu1ryrh77f1"
+
+[node name="Spawner2" type="Node2D" parent="Entities"]
+position = Vector2(516, -284)
+script = ExtResource("4_p2hwe")
+entity_scene = ExtResource("2_ff0on")
+spawn_cooldown = 2.0
+metadata/_custom_type_script = "uid://dseu1ryrh77f1"
+
+[node name="Spawner" type="Node2D" parent="Entities"]
+position = Vector2(-510, -290)
+script = ExtResource("4_p2hwe")
+entity_scene = ExtResource("2_ff0on")
+spawn_cooldown = 2.0
+metadata/_custom_type_script = "uid://dseu1ryrh77f1"
