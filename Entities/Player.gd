@@ -14,7 +14,7 @@ var _dir = Vector2.ZERO;
 var _state = State.Moving;
 var _rotation_timer = 0.0;
 
-var _entities_in_lasso: Array[Node2D] = [];
+var _entities_in_lasso: Array[Ingredient] = [];
 var _lasso_throw_distance = 0;
 
 enum State {
@@ -81,6 +81,7 @@ func _physics_process(delta: float) -> void:
 				_state = State.LassoRecall;
 
 				for entity in _entities_in_lasso:
+					Global.game.collect(entity.type);
 					entity.queue_free();
 					
 		State.LassoRecall:

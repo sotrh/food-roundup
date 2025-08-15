@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://bw5iwpsvhugv8"]
+[gd_scene load_steps=8 format=3 uid="uid://bw5iwpsvhugv8"]
 
 [ext_resource type="PackedScene" uid="uid://bndsjvkllbomm" path="res://Entities/Player.tscn" id="1_6io7f"]
 [ext_resource type="Texture2D" uid="uid://5yf0mwild7hv" path="res://Textures/dirt.png" id="1_p2hwe"]
-[ext_resource type="PackedScene" uid="uid://b03f2mffl5kp2" path="res://Entities/Ingredient.tscn" id="2_ff0on"]
+[ext_resource type="PackedScene" uid="uid://b03f2mffl5kp2" path="res://Entities/Ingredients/Ingredient.tscn" id="2_ff0on"]
 [ext_resource type="Script" uid="uid://py4en8l6575r" path="res://Utils/FollowCam.gd" id="3_ivoou"]
 [ext_resource type="Script" uid="uid://dseu1ryrh77f1" path="res://Utils/Spawner.gd" id="4_p2hwe"]
+[ext_resource type="Resource" uid="uid://gmuhlicl7cbr" path="res://Entities/Ingredients/carrot.tres" id="6_h2dl5"]
+[ext_resource type="Resource" uid="uid://dehv6s0yr48m7" path="res://Entities/Ingredients/tomato.tres" id="7_u74sm"]
 
 [node name="Level" type="Node2D"]
 
@@ -23,6 +25,7 @@ grow_vertical = 2
 texture = ExtResource("1_p2hwe")
 expand_mode = 1
 stretch_mode = 1
+metadata/_edit_lock_ = true
 
 [node name="FollowCam" type="Camera2D" parent="."]
 script = ExtResource("3_ivoou")
@@ -37,6 +40,7 @@ y_sort_enabled = true
 position = Vector2(-540, 283)
 script = ExtResource("4_p2hwe")
 entity_scene = ExtResource("2_ff0on")
+type = ExtResource("6_h2dl5")
 spawn_cooldown = 2.0
 metadata/_custom_type_script = "uid://dseu1ryrh77f1"
 
@@ -44,6 +48,7 @@ metadata/_custom_type_script = "uid://dseu1ryrh77f1"
 position = Vector2(519, 273)
 script = ExtResource("4_p2hwe")
 entity_scene = ExtResource("2_ff0on")
+type = ExtResource("7_u74sm")
 spawn_cooldown = 2.0
 metadata/_custom_type_script = "uid://dseu1ryrh77f1"
 
@@ -51,6 +56,7 @@ metadata/_custom_type_script = "uid://dseu1ryrh77f1"
 position = Vector2(516, -284)
 script = ExtResource("4_p2hwe")
 entity_scene = ExtResource("2_ff0on")
+type = ExtResource("7_u74sm")
 spawn_cooldown = 2.0
 metadata/_custom_type_script = "uid://dseu1ryrh77f1"
 
@@ -58,5 +64,6 @@ metadata/_custom_type_script = "uid://dseu1ryrh77f1"
 position = Vector2(-510, -290)
 script = ExtResource("4_p2hwe")
 entity_scene = ExtResource("2_ff0on")
+type = ExtResource("6_h2dl5")
 spawn_cooldown = 2.0
 metadata/_custom_type_script = "uid://dseu1ryrh77f1"

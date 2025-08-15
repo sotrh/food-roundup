@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Magic Lasso"
+config/name="Food Roundup"
 run/main_scene="uid://cr7lmwijuh1kk"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://j3sue7mcaru5"
 
 [autoload]
 

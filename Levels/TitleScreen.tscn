@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://be50eve65ilpf"]
+[gd_scene load_steps=7 format=3 uid="uid://be50eve65ilpf"]
 
 [ext_resource type="Script" uid="uid://dgbakphwcie2v" path="res://Levels/TitleScreen.gd" id="1_e4ts1"]
 [ext_resource type="Theme" uid="uid://ctbsli4xj6fmg" path="res://Themes/Title.tres" id="1_rct3j"]
+[ext_resource type="PackedScene" uid="uid://cql343mh8xobg" path="res://Levels/HUD.tscn" id="2_48thb"]
 [ext_resource type="Theme" uid="uid://cth5cvlx58hh6" path="res://Themes/Subtitle.tres" id="2_lyug1"]
+[ext_resource type="AudioStream" uid="uid://y7ibo3omjcbp" path="res://Audio/vacation-song-part-2.mp3" id="3_7afar"]
 [ext_resource type="AudioStream" uid="uid://co18a4qh6oiys" path="res://Audio/food-roundup-intro.mp3" id="3_fbnnv"]
 
 [node name="TitleScreen" type="CenterContainer"]
@@ -17,7 +19,9 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("1_e4ts1")
+game_ui = ExtResource("2_48thb")
 music = ExtResource("3_fbnnv")
+music2 = ExtResource("3_7afar")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2

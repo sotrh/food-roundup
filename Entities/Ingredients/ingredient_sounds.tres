@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SoundPack" load_steps=7 format=3 uid="uid://xvoajydnloc0"]
+
+[ext_resource type="Script" uid="uid://bpn8d3mul1hql" path="res://Entities/SoundPack.gd" id="1_qsupk"]
+[ext_resource type="AudioStream" uid="uid://crosf78y5bdm5" path="res://Audio/oh-no-1.mp3" id="1_vkddc"]
+[ext_resource type="AudioStream" uid="uid://8cddaifuowbp" path="res://Audio/oh-no-2.mp3" id="2_62y7x"]
+[ext_resource type="AudioStream" uid="uid://drx1aryyrawxh" path="res://Audio/panic-1_ahhh.mp3" id="3_cts7f"]
+[ext_resource type="AudioStream" uid="uid://cinq2djlfvtm" path="res://Audio/panic-2_eeeeee.mp3" id="4_ubyjq"]
+[ext_resource type="AudioStream" uid="uid://n8jg2xwb3icm" path="res://Audio/panic-3_ooh.mp3" id="6_wrv8k"]
+
+[resource]
+script = ExtResource("1_qsupk")
+flee_sounds = Array[AudioStream]([ExtResource("1_vkddc"), ExtResource("2_62y7x"), ExtResource("3_cts7f"), ExtResource("4_ubyjq")])
+surprise_sounds = Array[AudioStream]([ExtResource("6_wrv8k")])
+metadata/_custom_type_script = "uid://bpn8d3mul1hql"
