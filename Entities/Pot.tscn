@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjlipa58newbc"]
+
+[ext_resource type="Script" uid="uid://btydgwudxgddd" path="res://Entities/pot.gd" id="1_ervjq"]
+[ext_resource type="Texture2D" uid="uid://dhwj82x6m4ge1" path="res://Images/asset14-pot.png" id="1_xye4g"]
+[ext_resource type="AudioStream" uid="uid://buood7rmqjxmq" path="res://Audio/pot-of-water-boiling-54873.mp3" id="3_jk050"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xye4g"]
+radius = 36.0
+height = 86.0
+
+[node name="Pot" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_ervjq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.156028, 0.156028)
+texture = ExtResource("1_xye4g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_xye4g")
+
+[node name="BoilingWaterSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_jk050")

@@ -9,14 +9,18 @@ class_name Game extends Node;
 @onready var ui_slot = $"UI";
 @onready var music = $"Music";
 
+signal cooking_started;
+signal cooking_ended;
+
 var _music_queue: Array[AudioStream];
 
 var game_started = false;
 var sounds_playing = 0;
 
 var pack = {};
-var carrots = 0;
 
+var cooking = false;
+var cooking_timer = 0.0;
 
 func _ready() -> void:
 	load_level(start_level);
@@ -24,7 +28,12 @@ func _ready() -> void:
 	
 	
 func _process(delta: float) -> void:
-	pass
+	if cooking:
+		cooking_timer -= delta;
+		if cooking_timer <= 0:
+			cooking = false;
+			cooking_ended.emit();
+			print("Cooking done!");
 
 
 func play_music(audio: AudioStream):
@@ -67,6 +76,16 @@ func collect(item: IngredientType):
 		pack[item.id] += item.value;
 	else:
 		pack[item.id] = item.value;
+
+
+func stock_pot():
+	if cooking:
+		pass
+	elif !pack.is_empty():
+		pack.clear(); # TODO: check recipe if ready
+		cooking = true;
+		cooking_timer = 10; # This should be based on recipe
+		cooking_started.emit();
 
 
 func _on_music_finished() -> void:

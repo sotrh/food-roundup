@@ -15,5 +15,6 @@ func _input(event: InputEvent) -> void:
 	queue_free()
 
 func _ready() -> void:
-	Global.game.play_music(music);
-	Global.game.play_music(music2);
+	#Global.game.play_music(music);
+	#Global.game.play_music(music2);
+	pass

@@ -5,6 +5,12 @@ extends Control
 @onready var carrot_label = $MarginContainer/Pack/CarrotLabel;
 @onready var tomato_label = $MarginContainer/Pack/TomatoLabel;
 
+func _ready() -> void:
+	Global.game.cooking_started.connect(func ():
+		carrot_label.text = "0";
+		tomato_label.text = "0";
+	);
+
 func _process(delta: float) -> void:
 	if Global.game.pack.has(0):
 		carrot_label.text = "%d" % Global.game.pack[0];
