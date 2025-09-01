@@ -13,6 +13,7 @@ class_name Game extends Node;
 
 signal cooking_started;
 signal cooking_ended;
+signal game_over;
 
 var _music_queue: Array[AudioStream];
 
@@ -27,12 +28,29 @@ var cooking_timer = 0.0;
 var quota = 1000;
 var current_points = 0;
 
+var time_left = 0;
+
 func _ready() -> void:
 	load_level(start_level);
 	load_ui(start_ui);
 	
 	
 func _process(delta: float) -> void:
+	if !game_started:
+		return;
+		
+	time_left -= delta;
+	
+	if time_left <= 0:
+		time_left = 0
+		
+		if cooking:
+			cooking = false;
+			cooking_ended.emit();
+			
+		if current_points < quota:
+			game_over.emit();
+	
 	if cooking:
 		cooking_timer -= delta;
 		if cooking_timer <= 0:
@@ -57,6 +75,10 @@ func start_game() -> void:
 
 
 func load_level(level: PackedScene):
+	time_left = 100; # Make this configurable
+	quota = 1000;
+	current_points = 0;
+	
 	if level == null:
 		return;
 		

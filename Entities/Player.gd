@@ -40,6 +40,9 @@ func _input(event: InputEvent) -> void:
 
 
 func _process(delta: float) -> void:
+	if !Global.game.game_started:
+		return;
+	
 	if not Global.game.game_started:
 		lasso_target.visible = false;
 		lasso_visual.visible = false;

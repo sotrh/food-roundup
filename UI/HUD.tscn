@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cql343mh8xobg"]
+[gd_scene load_steps=6 format=3 uid="uid://cql343mh8xobg"]
 
 [ext_resource type="Script" uid="uid://cfi3mpskaallt" path="res://Levels/hud.gd" id="1_yixhe"]
 [ext_resource type="PackedScene" uid="uid://nvoek1dv8t35" path="res://UI/icon.tscn" id="2_ijstf"]
 [ext_resource type="Texture2D" uid="uid://dhwj82x6m4ge1" path="res://Images/asset14-pot.png" id="3_4n7mi"]
+[ext_resource type="Theme" uid="uid://cth5cvlx58hh6" path="res://Themes/Subtitle.tres" id="4_f2wx0"]
+[ext_resource type="Theme" uid="uid://ctbsli4xj6fmg" path="res://Themes/Title.tres" id="5_gppie"]
 
 [node name="HUD" type="MarginContainer"]
 offset_right = 1152.0
@@ -14,10 +16,40 @@ theme_override_constants/margin_bottom = 20
 script = ExtResource("1_yixhe")
 icon_scene = ExtResource("2_ijstf")
 
-[node name="Pack" type="VBoxContainer" parent="."]
+[node name="GameOver" type="CenterContainer" parent="."]
 layout_mode = 2
 
-[node name="Soup" parent="Pack" instance=ExtResource("2_ijstf")]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="GameOver/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_gppie")
+text = "Game Over!"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="GameOver/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_f2wx0")
+text = "Aw shucks! Better luck next time!"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Pack" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Soup" parent="HBoxContainer/Pack" instance=ExtResource("2_ijstf")]
 layout_mode = 2
 icon = ExtResource("3_4n7mi")
 text = "0/1000"
+
+[node name="Timer" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("4_f2wx0")
+text = "10.00"
+horizontal_alignment = 2
