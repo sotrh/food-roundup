@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://nvoek1dv8t35"]
+
+[ext_resource type="Texture2D" uid="uid://dbo5kpjiuy7st" path="res://Images/asset03-tomato.png" id="1_hqyvl"]
+[ext_resource type="Script" uid="uid://dullkh4wag6v7" path="res://UI/icon.gd" id="1_swkdd"]
+[ext_resource type="Theme" uid="uid://cth5cvlx58hh6" path="res://Themes/Subtitle.tres" id="2_otv2m"]
+
+[node name="Pack" type="HBoxContainer"]
+theme_override_constants/separation = 10
+script = ExtResource("1_swkdd")
+
+[node name="Icon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("1_hqyvl")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("2_otv2m")
+text = "0"

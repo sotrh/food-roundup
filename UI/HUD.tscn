@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cql343mh8xobg"]
+
+[ext_resource type="Script" uid="uid://cfi3mpskaallt" path="res://Levels/hud.gd" id="1_yixhe"]
+[ext_resource type="PackedScene" uid="uid://nvoek1dv8t35" path="res://UI/icon.tscn" id="2_ijstf"]
+[ext_resource type="Texture2D" uid="uid://dhwj82x6m4ge1" path="res://Images/asset14-pot.png" id="3_4n7mi"]
+
+[node name="HUD" type="MarginContainer"]
+offset_right = 1152.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("1_yixhe")
+icon_scene = ExtResource("2_ijstf")
+
+[node name="Pack" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Soup" parent="Pack" instance=ExtResource("2_ijstf")]
+layout_mode = 2
+icon = ExtResource("3_4n7mi")
+text = "0/1000"

@@ -5,6 +5,8 @@ class_name Game extends Node;
 @export var extents = Vector2(1500, 1500);
 @export var max_entity_sounds = 4;
 
+@export var ingredient_types: Array[IngredientType];
+
 @onready var world = $"World";
 @onready var ui_slot = $"UI";
 @onready var music = $"Music";
@@ -21,6 +23,9 @@ var pack = {};
 
 var cooking = false;
 var cooking_timer = 0.0;
+
+var quota = 1000;
+var current_points = 0;
 
 func _ready() -> void:
 	load_level(start_level);
@@ -82,7 +87,16 @@ func stock_pot():
 	if cooking:
 		pass
 	elif !pack.is_empty():
+		var multiplier = pack.size();
+		var points = 0;
+		
+		for key in pack:
+			points += pack[key];
+		
 		pack.clear(); # TODO: check recipe if ready
+		
+		current_points += points * multiplier;
+		
 		cooking = true;
 		cooking_timer = 10; # This should be based on recipe
 		cooking_started.emit();

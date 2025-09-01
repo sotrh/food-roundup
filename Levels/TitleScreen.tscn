@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dgbakphwcie2v" path="res://Levels/TitleScreen.gd" id="1_e4ts1"]
 [ext_resource type="Theme" uid="uid://ctbsli4xj6fmg" path="res://Themes/Title.tres" id="1_rct3j"]
-[ext_resource type="PackedScene" uid="uid://cql343mh8xobg" path="res://Levels/HUD.tscn" id="2_48thb"]
+[ext_resource type="PackedScene" uid="uid://cql343mh8xobg" path="res://UI/HUD.tscn" id="2_48thb"]
 [ext_resource type="Theme" uid="uid://cth5cvlx58hh6" path="res://Themes/Subtitle.tres" id="2_lyug1"]
 [ext_resource type="AudioStream" uid="uid://y7ibo3omjcbp" path="res://Audio/vacation-song-part-2.mp3" id="3_7afar"]
 [ext_resource type="AudioStream" uid="uid://co18a4qh6oiys" path="res://Audio/food-roundup-intro.mp3" id="3_fbnnv"]

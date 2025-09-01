@@ -1,20 +1,31 @@
 extends Control
 
 @export var types: Array[IngredientType];
+@export var icon_scene: PackedScene;
 
-@onready var carrot_label = $MarginContainer/Pack/CarrotLabel;
-@onready var tomato_label = $MarginContainer/Pack/TomatoLabel;
+@onready var pack = $Pack;
+@onready var soup = $Pack/Soup;
+
+var _icons = {};
 
 func _ready() -> void:
 	Global.game.cooking_started.connect(func ():
-		carrot_label.text = "0";
-		tomato_label.text = "0";
+		for key in _icons:
+			_icons[key].queue_free();
+		_icons.clear();
 	);
 
 func _process(delta: float) -> void:
-	if Global.game.pack.has(0):
-		carrot_label.text = "%d" % Global.game.pack[0];
-	if Global.game.pack.has(1):
-		tomato_label.text = "%d" % Global.game.pack[1];
-	pass
+	soup.text = "%d / %d" % [Global.game.current_points, Global.game.quota];
+	
+	for key in Global.game.pack:
+		var text = "%d" % Global.game.pack[key];
+		if _icons.has(key):
+			_icons[key].text = text;
+		else:
+			var icon = icon_scene.instantiate();
+			icon.text = text;
+			icon.icon = Global.game.ingredient_types[key].sprite;
+			pack.add_child(icon);
+			_icons[key] = icon;
 
